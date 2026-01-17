@@ -9,16 +9,17 @@ services:
     env_file:
       - ./fe/.env
     environment:
-      - REACT_APP_API_URL=${REACT_APP_API_URL:-http://localhost:3002}
+      - REACT_APP_API_URL=${REACT_APP_API_URL:-http://167.71.200.72:3002}
+      - PORT=${PORT:-3003}
 
   be-nodejs:
     container_name: be-nodejs
     ports:
       - 3002:3002
     build: ./be
+    env_file:
+      - ./be/.env
     environment:
       - PORT=${BE_PORT:-3002}
-      - DB_HOST=${DB_HOST:-mysql}
       - DB_USER=${DB_USER:-root}
-      - DB_PASSWORD=${DB_PASSWORD}
       - DB_NAME=${DB_NAME:-social_demo}
