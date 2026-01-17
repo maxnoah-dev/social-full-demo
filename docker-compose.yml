@@ -11,6 +11,7 @@ services:
     environment:
       - REACT_APP_API_URL=${REACT_APP_API_URL:-http://167.71.200.72:3002}
       - PORT=${PORT:-3003}
+    restart: unless-stopped
 
   be-nodejs:
     container_name: be-nodejs
@@ -23,3 +24,4 @@ services:
       - PORT=${BE_PORT:-3002}
       - DB_USER=${DB_USER:-root}
       - DB_NAME=${DB_NAME:-social_demo}
+    restart: unless-stopped
