@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  fe-react:
+    container_name: fe-react
+    ports:
+      - 3003:3003
+    build: ./fe
+    env_file:
+      - ./fe/.env
+    environment:
+      - REACT_APP_API_URL=${REACT_APP_API_URL:-http://localhost:3002}
+
+  be-nodejs:
+    container_name: be-nodejs
+    ports:
+      - 3002:3002
+    build: ./be
+    environment:
+      - PORT=${BE_PORT:-3002}
+      - DB_HOST=${DB_HOST:-mysql}
+      - DB_USER=${DB_USER:-root}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME:-social_demo}
