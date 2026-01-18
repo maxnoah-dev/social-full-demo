@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3002;
 
 app.use(cors({
-  origin: ["http://167.71.200.72:3003"],
+  origin: ["http://localhost:3003"],
   credentials: true,
 }));
 
@@ -63,5 +63,5 @@ app.get('/api/health', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://167.71.200.72:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });

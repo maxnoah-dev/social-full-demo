@@ -1,16 +1,12 @@
-version: '3'
-
 services:
   fe-react:
     container_name: fe-react
     ports:
-      - 3003:3003
-    build: ./fe
-    env_file:
-      - ./fe/.env
-    environment:
-      - REACT_APP_API_URL=${REACT_APP_API_URL:-http://167.71.200.72:3002}
-      - PORT=${PORT:-3003}
+      - 3003:80
+    build:
+      context: ./fe
+      args:
+        - REACT_APP_API_URL=${REACT_APP_API_URL:-http://localhost:3002}
     restart: unless-stopped
 
   be-nodejs:

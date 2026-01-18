@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:20 as build-react
 
 WORKDIR /fe
 
@@ -10,6 +10,12 @@ RUN yarn install
 
 COPY . .
 
-EXPOSE 3003
+ARG REACT_APP_API_URL
+ENV REACT_APP_API_URL=$REACT_APP_API_URL
 
-CMD ["yarn", "start"]
+RUN yarn build
+
+FROM nginx
+COPY --from=build-react /fe/build /usr/share/nginx/html
+
+EXPOSE 80
