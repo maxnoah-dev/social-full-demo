@@ -1,6 +1,7 @@
 name: demo-workflow
 on:
-  workflow_dispatch:
+  push:
+    branches: [fe-nginx-demo, main]
 
 jobs:
   job0:
