@@ -37,7 +37,7 @@ jobs:
           username: maxnoah901@gmail.com
           password: svesapkyjlnjqxhh
           subject: "Title"
-          body: "Body"
+          body: "Body - ${{needs.job1.outputs.data}} - ${{needs.job2.outputs.data}}"
           to: "hoangsondz1910@gmail.com"
           from: "maxnoah901@gmail.com"
 
