@@ -34,14 +34,15 @@
 
 name: demo-workflow
 on:
- workflow_displatch:
-  version:
-    type: string
-    require: true
+ workflow_dispatch:
+  # version:
+  #   type: string
+  #   require: true
 jobs:
-  run-demo:
-  runs-on: ubuntu-latest
-  steps:
-    - run: |
-        echo "hello world"
-        curl 
+  run-demo: 
+    runs-on: ubuntu-latest
+    steps:
+      # - id: step_id
+      - run: |
+          echo "hello world"
+          curl  
