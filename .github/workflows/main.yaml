@@ -34,10 +34,7 @@
 
 name: demo-workflow
 on:
- workflow_dispatch:
-  # version:
-  #   type: string
-  #   require: true
+  workflow_dispatch:
 
 jobs:
   run-demo: 
