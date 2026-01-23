@@ -8,7 +8,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     outputs:
-      data: "${{steps.step_id.output.data_in}}" # ${{}} - câu lệnh truy xuất biến
+      data: "${{steps.step_id.outputs.data_in}}" # ${{}} - câu lệnh truy xuất biến
     steps:
       - id: step_id
         run: |
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [job1]
     outputs:
-      data: "${{steps.step_id.output.data_in}}"
+      data: "${{steps.step_id.outputs.data_in}}"
     steps:
       - id: step_id
         run: |
