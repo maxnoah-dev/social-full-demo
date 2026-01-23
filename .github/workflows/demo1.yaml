@@ -1,0 +1,43 @@
+name: deploy
+on:
+  push:
+    branches: [fe-nginx-demo, main]
+permissions:
+  contents: read
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+      data: "${{steps.step_id.output.data_in}}" # ${{}} - câu lệnh truy xuất biến
+    steps:
+      - id: step_id
+        run: |
+          echo "Hello World!"
+          echo "data_in=1" >> $GITHUB_OUTPUT
+  job2:
+    runs-on: ubuntu-latest
+    needs: [job1]
+    outputs:
+      data: "${{steps.step_id.output.data_in}}"
+    steps:
+      - id: step_id
+        run: |
+          echo "Hello World"
+          echo "data_in=2" >> $GITHUB_OUTPUT
+  job3:
+    runs-on: ubuntu-latest
+    needs: [job1, job2]
+    steps:
+      - name: send-email-demo
+        if: $((${{needs.job1.outputs.data}} + ${{needs.job2.outputs.data}})) == 3
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: maxnoah901@gmail.com
+          password: svesapkyjlnjqxhh
+          subject: "Title"
+          body: "Body"
+          to: "hoangsondz1910@gmail.com"
+          from: "maxnoah901@gmail.com"
+
