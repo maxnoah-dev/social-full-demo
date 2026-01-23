@@ -45,4 +45,3 @@ jobs:
       # - id: step_id
       - run: |
           echo "hello world"
-          curl  
