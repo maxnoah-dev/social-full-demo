@@ -38,9 +38,16 @@ on:
   # version:
   #   type: string
   #   require: true
+
 jobs:
   run-demo: 
     runs-on: ubuntu-latest
     steps:
-      # - id: step_id
-      - run: echo "hello world"
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Run demo
+        run: |
+          echo "hello world"
+          echo "Repository: ${{ github.repository }}"
+          echo "Actor: ${{ github.actor }}"
